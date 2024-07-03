@@ -98,7 +98,7 @@ jobs:
       - name: Upload MkDocs artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./docs/site
+          path: ./site
   # Deployment job
   deploy:
     environment:
