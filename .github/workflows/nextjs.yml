@@ -111,10 +111,10 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v2
 
-      - name: Deploy MkDocs to GitHub Pages
-        id: deploy-mkdocs
-        uses: actions/deploy-pages@v2
-        with:
-          artifact_name: mkdocs-artifact
-          target_branch: mkdocs
-          target_path: docs
+      # - name: Deploy MkDocs to GitHub Pages
+      #   id: deploy-mkdocs
+      #   uses: actions/deploy-pages@v2
+      #   with:
+      #     artifact_name: mkdocs-artifact
+      #     target_branch: mkdocs
+      #     target_path: docs
