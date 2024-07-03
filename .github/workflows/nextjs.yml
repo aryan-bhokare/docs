@@ -90,10 +90,10 @@ jobs:
           python-version: "3.x"
 
       - name: Install MkDocs
-        run: pip install -r docs/requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Build MkDocs
-        run: mkdocs build -f docs/mkdocs.yml
+        run: mkdocs build -f mkdocs.yml
 
       - name: Upload MkDocs artifact
         uses: actions/upload-pages-artifact@v1
