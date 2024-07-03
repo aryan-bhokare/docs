@@ -107,9 +107,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Checkout gh-pages branch
-        run: git checkout mkdocs
-
       - name: Deploy Next.js to GitHub Pages
         id: deploy-nextjs
         uses: actions/deploy-pages@v2
