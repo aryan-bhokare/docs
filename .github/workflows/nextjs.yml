@@ -84,17 +84,17 @@ jobs:
         with:
           path: ./out
 
-          - name: Setup Python
-          uses: actions/setup-python@v3
-          with:
-            python-version: '3.x'
-        
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.x"
+
       - name: Install MkDocs
         run: pip install -r docs/requirements.txt
-        
+
       - name: Build MkDocs
         run: mkdocs build -f docs/mkdocs.yml
-        
+
       - name: Upload MkDocs artifact
         uses: actions/upload-pages-artifact@v1
         with:
