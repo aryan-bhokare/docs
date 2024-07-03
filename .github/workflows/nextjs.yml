@@ -7,7 +7,7 @@ name: Deploy Next.js site to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["mkdocs"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -84,6 +84,17 @@ jobs:
         with:
           path: ./out
 
+      - name: Install MkDocs
+        run: pip install -r requirements.txt
+
+      - name: Build MkDocs
+        run: mkdocs build -f docs/mkdocs.yml
+
+      - name: Upload MkDocs artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./docs/site
+
   # Deployment job
   deploy:
     environment:
@@ -95,3 +106,11 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+
+      - name: Deploy MkDocs to GitHub Pages
+        id: deploy-mkdocs
+        uses: actions/deploy-pages@v2
+        with:
+          artifact_name: mkdocs-artifact
+          target_branch: gh-pages
+          target_path: docs
