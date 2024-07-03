@@ -1,20 +1,15 @@
 name: Deploy Next.js site and MkDocs to Pages
 
 on:
-  # Runs on pushes targeting the 'mkdocs' branch
   push:
     branches: ["mkdocs"]
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -40,6 +35,8 @@ jobs:
           else
             echo "Unable to determine package manager"
             exit 1
+        shell: bash
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -91,7 +88,7 @@ jobs:
       - name: Upload MkDocs artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./site
+          path: ./docs/site
 
   deploy:
     environment:
